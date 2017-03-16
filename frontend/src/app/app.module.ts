@@ -1,3 +1,5 @@
+import { BackendService } from './_shared/backend.service';
+import { RestExplorer } from './_shared/restExplorer.service';
 import { OverviewModule } from './overview/overview.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,7 +18,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     OverviewModule
   ],
-  providers: [],
+  providers: [BackendService, RestExplorer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { BackendService } from '../_shared/backend.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,8 +8,17 @@ import { Component } from '@angular/core';
 })
 export class OverviewComponent {
   title = 'overview works!';
+  things: any;
 
-  addThing(){
+  constructor(
+    private backendService: BackendService
+  ) {
+    backendService.backend.then(() => {
+      backendService.backend.$things.get().then(things => this.things = things);
+    });
+  }
+
+  addThing() {
     alert('add some things');
   }
 }

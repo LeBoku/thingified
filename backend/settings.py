@@ -1,6 +1,7 @@
 import thing
 
 # API Base
+X_DOMAINS = "*";
 
 # Domain setup
 
