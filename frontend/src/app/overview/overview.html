@@ -1,3 +1,5 @@
-{{things | json}}
+<div *ngFor="let thing of things?.$ressources">{{thing.title}}
+    <hr>
+</div>
 
 <button (click)="addThing()"> + Add Thing</button>
