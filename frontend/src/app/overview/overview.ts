@@ -1,3 +1,4 @@
+import { Ressource } from '../_shared/_restExplorer/ressource';
 import { ThingsService } from '../_shared/things.service';
 import { BackendService } from '../_shared/backend.service';
 import { Component } from '@angular/core';
@@ -20,6 +21,10 @@ export class OverviewComponent {
 
   loadThings() {
     return this.thingsService.loadThings().then(list => this.things = list);
+  }
+
+  deleteThing(thing: any) {
+    thing.$thing.delete().then(() => this.loadThings());
   }
 
   onThingAdded() {

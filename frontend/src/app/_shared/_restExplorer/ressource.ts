@@ -17,11 +17,12 @@ export class Ressource {
         private http: Http,
         private analyzer: RestAnalyzer,
         private key: string,
-        private info: any
+        private info: any,
+        data: any
     ) {
         this.setUpInfo(key, info);
         this.setUpName();
-        this.setUpHttpConfig();
+        this.setUpHttpConfig(data);
     }
 
     get() {
@@ -29,14 +30,20 @@ export class Ressource {
             .then(data => this.analyzer.analyzeData(data.json()));
     }
 
+    delete() {
+        return this.http.delete(this.href, this.httpConfig).toPromise();
+    }
+
     post(data: any) {
         return this.http.post(this.href, data, this.httpConfig).toPromise()
             .then(data => this.analyzer.analyzeData(data.json()));
     }
 
-    private setUpHttpConfig() {
+    private setUpHttpConfig(data: any) {
         this.httpConfig = new BaseRequestOptions();
-        this.httpConfig.headers.append('content-type', 'application/json')
+        this.httpConfig.headers.append('content-type', 'application/json');
+        this.httpConfig.headers.append('If-Match', data._etag);
+
     }
 
     private setUpName() {
@@ -45,7 +52,7 @@ export class Ressource {
 
     private setUpInfo(key: string, info: any) {
         this.rel = key;
-        this.title = info.title;
+        this.title = info.title.toLowerCase();
 
         this.relativeHref = info.href;
         this.href = constants.BACKEND_URL + '/' + this.relativeHref;

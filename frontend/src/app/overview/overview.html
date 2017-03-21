@@ -1,5 +1,5 @@
 <div class="list">
-    <div class="thing" *ngFor="let thing of things?._items">{{thing.name}}</div>
+    <div class="thing" *ngFor="let thing of things?._items">{{thing.name}} <div (click)="deleteThing(thing)">-</div></div>
 </div>
 
 <div (click)="isShowingForm = true" *ngIf="!isShowingForm">Add Thing</div>

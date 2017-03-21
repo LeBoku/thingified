@@ -21,11 +21,11 @@ export class RestAnalyzer {
             let value = data[key];
 
             if (key === this.config.linksKey) {
-                ressources.push(...this.extractRessources(key, value));
+                ressources.push(...this.extractRessources(key, value, data));
             } else if (this.shouldInvestigateKey(key, value)) {
                 if (_.isArray(data[key])) {
                     data[key].forEach((item: any, index: number) => {
-                        return data[key][index] = this.analyzeData(data[key])
+                        return data[key][index] = this.analyzeData(data[key][index])
                     });
                 }
             }
@@ -43,16 +43,18 @@ export class RestAnalyzer {
     private shouldInvestigateKey(key: string, data: any) {
         let shouldInvestigate = false;
         shouldInvestigate = shouldInvestigate || key === this.config.itemsKey;
+
+        return shouldInvestigate;
     }
 
-    private extractRessources(key: string, data: any) {
+    private extractRessources(key: string, data: any, container: any) {
         let ressources = [];
 
         Object.keys(data).forEach(key => {
             if (_.isArray(data[key])) {
-                data[key].forEach(resource => ressources.push(new Ressource(this.http, this, key, resource)));
+                data[key].forEach(resource => ressources.push(new Ressource(this.http, this, key, resource, container)));
             } else {
-                ressources.push(new Ressource(this.http, this, key, data[key]));
+                ressources.push(new Ressource(this.http, this, key, data[key], container));
             }
         });
 
