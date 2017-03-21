@@ -1,3 +1,4 @@
+import { ThingsService } from '../_shared/things.service';
 import { BackendService } from '../_shared/backend.service';
 import { Component } from '@angular/core';
 
@@ -12,16 +13,17 @@ export class OverviewComponent {
   isShowingForm = false;
 
   constructor(
-    private backendService: BackendService
+    private thingsService: ThingsService
   ) {
-    backendService.backendPromise.then(() => {
-      backendService.backend.$things.get().then(things => this.things = things);
-    });
+    this.loadThings();
+  }
+
+  loadThings() {
+    return this.thingsService.loadThings().then(list => this.things = list);
   }
 
   onThingAdded() {
-    this.backendService.backendPromise.then(() => {
-      this.backendService.backend.$things.get().then(things => this.things = things);
-    });
+    this.loadThings();
+    this.isShowingForm = false;
   }
 }

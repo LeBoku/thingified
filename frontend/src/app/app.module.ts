@@ -1,3 +1,4 @@
+import { ThingsService } from './_shared/things.service';
 import { FormModule } from './form/form.module';
 import { BackendService } from './_shared/backend.service';
 import { RestExplorer } from './_shared/restExplorer.service';
@@ -20,7 +21,7 @@ import { AppComponent } from './app.component';
     FormModule,
     OverviewModule
   ],
-  providers: [BackendService, RestExplorer],
+  providers: [BackendService, RestExplorer, ThingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
