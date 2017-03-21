@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'tng-form',
-  templateUrl: './form.html',
-  styleUrls: ['./form.scss']
+  templateUrl: './thingForm.html',
+  styleUrls: ['./thingForm.scss']
 })
 export class FormComponent {
   thing: Thing

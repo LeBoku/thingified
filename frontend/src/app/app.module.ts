@@ -1,5 +1,5 @@
 import { ThingsService } from './_shared/things.service';
-import { FormModule } from './form/form.module';
+import { ThingFormModule } from './thingForm/thingForm.module';
 import { BackendService } from './_shared/backend.service';
 import { RestExplorer } from './_shared/restExplorer.service';
 import { OverviewModule } from './overview/overview.module';
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    FormModule,
+    ThingFormModule,
     OverviewModule
   ],
   providers: [BackendService, RestExplorer, ThingsService],

@@ -1,4 +1,4 @@
-import { FormModule } from '../form/form.module';
+import { ThingFormModule } from '../thingForm/thingForm.module';
 import { BrowserModule } from '@angular/platform-browser/src/browser';
 import { NgModule } from '@angular/core';
 import { OverviewComponent } from './overview';
@@ -9,7 +9,7 @@ import { OverviewComponent } from './overview';
     ],
     imports: [
         BrowserModule,
-        FormModule
+        ThingFormModule
     ],
     exports: [
         OverviewComponent

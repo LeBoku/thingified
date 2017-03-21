@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { FormComponent } from './form';
+import { FormComponent } from './thingForm';
 
 import { BrowserModule } from '@angular/platform-browser/src/browser';
 import { NgModule } from '@angular/core';
@@ -17,4 +17,4 @@ import { NgModule } from '@angular/core';
     ],
     providers: [],
 })
-export class FormModule { }
+export class ThingFormModule { }
