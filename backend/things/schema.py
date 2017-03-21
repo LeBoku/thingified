@@ -3,7 +3,7 @@ connection = {
 	"type": "dict",
 	"schema": {
 		"name": {"type": "string"},
-		"type": {"type": "int"}
+		"type": {"type": "number"}
 	}
 }
 
