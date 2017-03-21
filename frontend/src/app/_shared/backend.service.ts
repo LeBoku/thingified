@@ -5,10 +5,11 @@ import { RestExplorer } from './restExplorer.service';
 @Injectable()
 export class BackendService {
     backend: any;
+    backendPromise: Promise<any>;
 
     constructor(
         restExplorer: RestExplorer
     ) {
-        this.backend = restExplorer.fromHref(constants.BACKEND_URL).then(backend => this.backend = backend);
+        this.backendPromise = restExplorer.fromHref(constants.BACKEND_URL).then(backend => this.backend = backend);
     }
 }

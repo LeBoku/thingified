@@ -1,9 +1,9 @@
-<div *ngFor="let thing of things?.$ressources">{{thing.title}}
-    <hr>
+<div class="list">
+    <div class="thing" *ngFor="let thing of things?._items">{{thing.name}}</div>
 </div>
 
-<div (click)="isShowingForm = true"  *ngIf="!isShowingForm">Add Thing</div>
+<div (click)="isShowingForm = true" *ngIf="!isShowingForm">Add Thing</div>
 <div class="formContainer" *ngIf="isShowingForm">
-    <tng-form></tng-form>
+    <tng-form (onCreated)="onThingAdded()"></tng-form>
     <div (click)="isShowingForm = false">hide</div>
 </div>

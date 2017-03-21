@@ -9,13 +9,19 @@ import { Component } from '@angular/core';
 export class OverviewComponent {
   title = 'overview works!';
   things: any;
-  isShowingForm = true;
+  isShowingForm = false;
 
   constructor(
     private backendService: BackendService
   ) {
-    backendService.backend.then(() => {
+    backendService.backendPromise.then(() => {
       backendService.backend.$things.get().then(things => this.things = things);
+    });
+  }
+
+  onThingAdded() {
+    this.backendService.backendPromise.then(() => {
+      this.backendService.backend.$things.get().then(things => this.things = things);
     });
   }
 }
