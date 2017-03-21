@@ -1,0 +1,15 @@
+:host(){
+    display: flex;
+    width: 300px;
+}
+
+.inputRow{
+    
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.descWrapper{
+    display: flex;
+    flex-direction: column;
+}

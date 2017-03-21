@@ -1,19 +1,20 @@
-import { FormModule } from '../form/form.module';
+import { FormsModule } from '@angular/forms';
+import { FormComponent } from './form';
+
 import { BrowserModule } from '@angular/platform-browser/src/browser';
 import { NgModule } from '@angular/core';
-import { OverviewComponent } from './overview';
 
 @NgModule({
     declarations: [
-        OverviewComponent
+        FormComponent
     ],
     imports: [
         BrowserModule,
-        FormModule
+        FormsModule
     ],
     exports: [
-        OverviewComponent
+        FormComponent
     ],
     providers: [],
 })
-export class OverviewModule { }
+export class FormModule { }

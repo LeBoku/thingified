@@ -1,0 +1,12 @@
+<form (ngSubmit)="saveThing()" #thingForm="ngForm">
+    <div class="inputRow">
+        <label for="name">Name:</label> <input id="name" type="text" [(ngModel)]="thing.name" placeholder="No name given"
+            name="name" required>
+    </div>
+    <div class="descWrapper">
+        <label for="desc">Description:</label>
+        <textarea id="desc" cols="30" rows="10" placeholder="No description given" [(ngModel)]="thing.description" name="desc"></textarea>
+    </div>
+    <button type="submit">Create</button>
+</form>
+{{thing | json}}

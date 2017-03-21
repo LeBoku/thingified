@@ -2,4 +2,8 @@
     <hr>
 </div>
 
-<button (click)="addThing()"> + Add Thing</button>
+<div (click)="isShowingForm = true"  *ngIf="!isShowingForm">Add Thing</div>
+<div class="formContainer" *ngIf="isShowingForm">
+    <tng-form></tng-form>
+    <div (click)="isShowingForm = false">hide</div>
+</div>

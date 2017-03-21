@@ -1,3 +1,5 @@
+import { BaseRequestOptions } from '@angular/http/src/base_request_options';
+import { RequestOptionsArgs } from '@angular/http';
 import { RestAnalyzer } from './restAnalyzer';
 import { constants } from '../../app.constants';
 import { Http } from '@angular/http';
@@ -9,6 +11,7 @@ export class Ressource {
     href: string;
 
     name: string;
+    httpConfig: RequestOptionsArgs
 
     constructor(
         private http: Http,
@@ -18,16 +21,22 @@ export class Ressource {
     ) {
         this.setUpInfo(key, info);
         this.setUpName();
+        this.setUpHttpConfig();
     }
 
     get() {
-        return this.http.get(this.href).toPromise()
+        return this.http.get(this.href, this.httpConfig).toPromise()
             .then(data => this.analyzer.analyzeData(data.json()));
     }
 
     post(data: any) {
-        return this.http.post(this.href, data).toPromise()
+        return this.http.post(this.href, data, this.httpConfig).toPromise()
             .then(data => this.analyzer.analyzeData(data.json()));
+    }
+
+    private setUpHttpConfig() {
+        this.httpConfig = new BaseRequestOptions();
+        this.httpConfig.headers.append('content-type', 'application/json')
     }
 
     private setUpName() {
