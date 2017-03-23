@@ -39,13 +39,5 @@
 .showFormButton{
     @extend .buttonStyle;
     background-color: $ADD_COLOR;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 5px;
-    &::before{
-        font-size: 30px;
-        color: white;
-        content: '+';
-    }
 }

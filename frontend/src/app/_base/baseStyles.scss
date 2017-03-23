@@ -3,10 +3,18 @@ textarea{
 }
 
 .buttonStyle{
-    $dimensions: 40px;
+    $dimensions: 35px;
     height: $dimensions;
     width: $dimensions;
 
     border-radius: 50%;
     box-shadow: 4px 4px 10px grey;
+
+    font-size: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
 }

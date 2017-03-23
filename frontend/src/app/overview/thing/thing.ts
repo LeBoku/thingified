@@ -1,4 +1,5 @@
-import {HostListener} from '@angular/core';
+import { EventEmitter } from '@angular/core/src/facade/async';
+import { Output } from '@angular/core/src/metadata/directives';
 import { Thing } from '../../models/thing.model';
 import { Component, Input } from '@angular/core';
 
@@ -9,10 +10,10 @@ import { Component, Input } from '@angular/core';
 })
 export class OverviewThingComponent {
     @Input() thing: Thing;
-    showDescription = false;
+    @Output() onDeleted = new EventEmitter();
+    showDetails = true;
 
-    @HostListener('click', [])
-    onClick(){
-        this.showDescription = !this.showDescription;
+    deleteThing(thing: any) {
+        thing.$thing.delete().then(() => this.onDeleted.emit());
     }
 }

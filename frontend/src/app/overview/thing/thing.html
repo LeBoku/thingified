@@ -1,2 +1,8 @@
-<div class="name">{{thing.name}}</div>
-<div class="description" *ngIf="showDescription" [ngClass]="{placeholder: !thing.description}">{{thing.description || 'No description given'}}</div>
+<div class="name" (click)="showDetails = !showDetails">{{thing.name}}</div>
+<div class="details" *ngIf="showDetails">
+    <div class="description" [ngClass]="{placeholder: !thing.description}">{{thing.description || 'No description given'}}</div>
+    <div class="buttons">
+        <div class="edit"> / </div>
+        <div class="delete" (click)="deleteThing(thing)"> - </div>
+    </div>
+</div>

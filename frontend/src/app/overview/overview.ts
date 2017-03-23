@@ -23,10 +23,6 @@ export class OverviewComponent {
     return this.thingsService.loadThings().then(list => this.things = list);
   }
 
-  deleteThing(thing: any) {
-    thing.$thing.delete().then(() => this.loadThings());
-  }
-
   onThingAdded() {
     this.loadThings();
     this.isShowingForm = false;
