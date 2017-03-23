@@ -1,1 +1,2 @@
-{{thing.name}}
+<div class="name">{{thing.name}}</div>
+<div class="description" *ngIf="showDescription" [ngClass]="{placeholder: !thing.description}">{{thing.description || 'No description given'}}</div>

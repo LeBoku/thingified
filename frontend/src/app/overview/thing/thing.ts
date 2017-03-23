@@ -1,3 +1,4 @@
+import {HostListener} from '@angular/core';
 import { Thing } from '../../models/thing.model';
 import { Component, Input } from '@angular/core';
 
@@ -8,4 +9,10 @@ import { Component, Input } from '@angular/core';
 })
 export class OverviewThingComponent {
     @Input() thing: Thing;
+    showDescription = false;
+
+    @HostListener('click', [])
+    onClick(){
+        this.showDescription = !this.showDescription;
+    }
 }

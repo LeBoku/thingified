@@ -1,4 +1,5 @@
 @import 'src/app/_base/globals.scss';
+@import 'src/app/_base/baseStyles.scss';
 
 :host(){
     margin:5px;
@@ -13,6 +14,10 @@
 .list{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    tng-overview-thing{
+        margin-top: 5px;
+    }
 }
 
 .formContainer{
@@ -25,17 +30,14 @@
     align-items: flex-end;
     &.open{
         border: 1px solid black;
+        .showFormButton{
+            box-shadow: none;
+        }
     }
 }
 
 .showFormButton{
-    $dimensions: 40px;
-    height: $dimensions;
-    width: $dimensions;
-
-    border-radius: 50%;
-    box-shadow: 4px 4px 10px grey;
-
+    @extend .buttonStyle;
     background-color: $ADD_COLOR;
     display: flex;
     justify-content: center;

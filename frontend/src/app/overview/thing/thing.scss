@@ -1,0 +1,17 @@
+:host(){
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.name{
+    font-weight: bold;
+}
+
+.description{
+    margin-top: 5px;
+    &.placeholder{
+        color: lightgray;
+    }
+}

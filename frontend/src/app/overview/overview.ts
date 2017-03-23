@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 export class OverviewComponent {
   title = 'overview works!';
   things: any;
-  isShowingForm = true;
+  isShowingForm = false;
 
   constructor(
     private thingsService: ThingsService
