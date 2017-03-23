@@ -1,11 +1,49 @@
+@import 'src/app/_base/globals.scss';
+
 :host(){
     margin:5px;
     padding: 5px;
     display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
     border: 1px solid lightgrey;
+    position: relative;
 }
 
-list{
+.list{
     display: flex;
     flex-direction: column;
+}
+
+.formContainer{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &.open{
+        border: 1px solid black;
+    }
+}
+
+.showFormButton{
+    $dimensions: 40px;
+    height: $dimensions;
+    width: $dimensions;
+
+    border-radius: 50%;
+    box-shadow: 4px 4px 10px grey;
+
+    background-color: $ADD_COLOR;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    &::before{
+        font-size: 30px;
+        color: white;
+        content: '+';
+    }
 }

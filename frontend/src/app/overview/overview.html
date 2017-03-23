@@ -1,9 +1,9 @@
 <div class="list">
-    <div class="thing" *ngFor="let thing of things?._items">{{thing.name}} <div (click)="deleteThing(thing)">-</div></div>
+    <tng-overview-thing *ngFor="let thing of things?._items" [thing]="thing"> </tng-overview-thing>
+    <!--<div class="thing" *ngFor="let thing of things?._items">{{thing.name}} <div (click)="deleteThing(thing)">-</div></div>-->
 </div>
 
-<div (click)="isShowingForm = true" *ngIf="!isShowingForm">Add Thing</div>
-<div class="formContainer" *ngIf="isShowingForm">
-    <tng-form (onCreated)="onThingAdded()"></tng-form>
-    <div (click)="isShowingForm = false">hide</div>
+<div class="formContainer" [ngClass]="{open: isShowingForm}">
+    <div class="showFormButton" (click)="isShowingForm = !isShowingForm"></div>
+    <tng-form (onCreated)="onThingAdded()" *ngIf="isShowingForm"></tng-form>
 </div>
