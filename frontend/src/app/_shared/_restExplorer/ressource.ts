@@ -34,6 +34,10 @@ export class Ressource {
         return this.http.delete(this.href, this.httpConfig).toPromise();
     }
 
+    update(data: any) {
+        return this.http.put(this.href, data, this.httpConfig).toPromise();
+    }
+
     post(data: any) {
         return this.http.post(this.href, data, this.httpConfig).toPromise()
             .then(data => this.analyzer.analyzeData(data.json()));

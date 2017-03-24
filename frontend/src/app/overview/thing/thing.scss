@@ -34,7 +34,8 @@
     justify-content: flex-end;
 
     &>*{
-        margin: 5px;
+        margin: 2px;
+        padding: 2px;
     }
 }
 
@@ -42,7 +43,32 @@
     @extend .buttonStyle;
     background-color: $DELETE_COLOR;
 }
-.edit{
-    @extend .buttonStyle;
-    background-color: $ADD_COLOR;
+
+.editForm{
+    position: relative;
+    .edit{
+        @extend .buttonStyle;
+        background-color: $ADD_COLOR;
+        margin-bottom: 5px;
+    }
+    tng-form{
+        padding: 5px;
+        border: 1px solid $BORDER_COLOR;
+        position: absolute;
+        background-color: white;
+        left: -1px;
+        top: calc(100% - 1px);
+        z-index: 1;
+    }
+    &.open{
+        background-color: white;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        border: 1px solid $BORDER_COLOR;
+        border-bottom: none;
+        .edit{
+            box-shadow: none;
+            z-index: 2;
+        }
+    }
 }

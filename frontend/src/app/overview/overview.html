@@ -4,5 +4,5 @@
 
 <div class="formContainer" [ngClass]="{open: isShowingForm}">
     <div class="showFormButton" (click)="isShowingForm = !isShowingForm">+</div>
-    <tng-form (onCreated)="onThingAdded()" *ngIf="isShowingForm"></tng-form>
+    <tng-form (onSaved)="onThingAdded()" *ngIf="isShowingForm"></tng-form>
 </div>

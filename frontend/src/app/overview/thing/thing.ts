@@ -12,6 +12,7 @@ export class OverviewThingComponent {
     @Input() thing: Thing;
     @Output() onDeleted = new EventEmitter();
     showDetails = false;
+    isEditing = false;
 
     deleteThing(thing: any) {
         thing.$thing.delete().then(() => this.onDeleted.emit());
