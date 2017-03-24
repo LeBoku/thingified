@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
 export class OverviewThingComponent {
     @Input() thing: Thing;
     @Output() onDeleted = new EventEmitter();
-    showDetails = true;
+    showDetails = false;
 
     deleteThing(thing: any) {
         thing.$thing.delete().then(() => this.onDeleted.emit());

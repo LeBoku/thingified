@@ -1,32 +1,48 @@
 @import 'src/app/_base/baseStyles.scss';
+@import 'src/app/_base/mixins.scss';
+@import 'src/app/_base/globals.scss';
 
 :host(){
-    border: 1px solid black;
+    position: relative;
+    background-color: white;
+    @include boxshadow;
+}
+
+.content{
+    border: 1px solid $BORDER_COLOR;
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
 .name{
+    @extend .clickable;
     font-weight: bold;
 }
 
 .description{
     margin-top: 5px;
     &.placeholder{
-        color: lightgray;
+        color: $BORDER_COLOR;
     }
 }
 .buttons{
+    z-index: 2;
+    position: absolute;
+    top: 100%;
     display: flex;
     justify-content: flex-end;
+
+    &>*{
+        margin: 5px;
+    }
 }
 
 .delete{
     @extend .buttonStyle;
-    background-color: red;
+    background-color: $DELETE_COLOR;
 }
 .edit{
     @extend .buttonStyle;
-    background-color: blue;
+    background-color: $ADD_COLOR;
 }

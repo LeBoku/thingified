@@ -1,14 +1,21 @@
+@import './mixins.scss';
+
 textarea{
     resize: none;
 }
 
+.clickable{
+    user-select: none;
+}
+
 .buttonStyle{
+    @extend .clickable;
+    @include boxshadow;
     $dimensions: 35px;
     height: $dimensions;
     width: $dimensions;
 
     border-radius: 50%;
-    box-shadow: 4px 4px 10px grey;
 
     font-size: 30px;
 
