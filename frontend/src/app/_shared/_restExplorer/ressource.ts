@@ -12,6 +12,7 @@ export class Ressource {
 
     name: string;
     httpConfig: RequestOptionsArgs
+    extractedData: any;
 
     constructor(
         private http: Http,
@@ -23,6 +24,7 @@ export class Ressource {
         this.setUpInfo(key, info);
         this.setUpName();
         this.setUpHttpConfig(data);
+        this.extractData(data);
     }
 
     get() {
@@ -34,13 +36,21 @@ export class Ressource {
         return this.http.delete(this.href, this.httpConfig).toPromise();
     }
 
-    update(data: any) {
-        return this.http.put(this.href, data, this.httpConfig).toPromise();
+    update() {
+        return this.http.put(this.href, this.extractedData, this.httpConfig).toPromise();
     }
 
     post(data: any) {
         return this.http.post(this.href, data, this.httpConfig).toPromise()
             .then(data => this.analyzer.analyzeData(data.json()));
+    }
+
+    private extractData(data: any) {
+        this.extractedData = this.clone(data);
+        delete this.extractedData._created;
+        delete this.extractedData._links;
+        delete this.extractedData._updated;
+        delete this.extractedData._etag;
     }
 
     private setUpHttpConfig(data: any) {
@@ -60,5 +70,9 @@ export class Ressource {
 
         this.relativeHref = info.href;
         this.href = constants.BACKEND_URL + '/' + this.relativeHref;
+    }
+
+    private clone(data: any) {
+        return JSON.parse(JSON.stringify(data));
     }
 }

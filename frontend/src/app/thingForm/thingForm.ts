@@ -22,7 +22,7 @@ export class FormComponent {
 
   saveThing() {
     if (this.thing._id) {
-      this.thing.$thing.update(this.thing).then(() => this.onSaved.emit());
+      this.thing.$thing.update().then(() => this.onSaved.emit());
     } else {
       this.backendService.backend.$things.post(this.thing).then(() => this.onSaved.emit());
     }
