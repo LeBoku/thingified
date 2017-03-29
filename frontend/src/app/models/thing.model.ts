@@ -1,7 +1,7 @@
 import { Ressource } from '../_shared/_restExplorer/ressource';
 
 export class Thing {
-    public $thing: Ressource;
+    public $self: Ressource;
     public _id: string;
 
     constructor(

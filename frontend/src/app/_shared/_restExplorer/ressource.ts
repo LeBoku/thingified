@@ -37,7 +37,9 @@ export class Ressource {
     }
 
     update() {
-        return this.http.put(this.href, this.extractedData, this.httpConfig).toPromise();
+        return this.http.put(this.href, this.extractedData, this.httpConfig).toPromise().then(resp => {
+            this.setETag(resp.json()._etag);
+        });
     }
 
     post(data: any) {
@@ -55,13 +57,17 @@ export class Ressource {
 
     private setUpHttpConfig(data: any) {
         this.httpConfig = new BaseRequestOptions();
-        this.httpConfig.headers.append('content-type', 'application/json');
-        this.httpConfig.headers.append('If-Match', data._etag);
+        this.httpConfig.headers.set('content-type', 'application/json');
 
+        this.setETag(data._etag);
+    }
+
+    private setETag(eTag: string) {
+        this.httpConfig.headers.set('If-Match', eTag);
     }
 
     private setUpName() {
-        this.name = this.title;
+        this.name = this.rel == 'self' ? this.rel : this.title;
     }
 
     private setUpInfo(key: string, info: any) {
