@@ -1,3 +1,4 @@
+import { UtilService } from '../util.service';
 import { Response } from '@angular/http';
 import { Ressource } from './ressource';
 import * as _ from 'lodash';
@@ -10,7 +11,8 @@ export class RestAnalyzer {
     }
 
     constructor(
-        public http: any
+        private http: any,
+        private util: UtilService
     ) {
 
     }
@@ -52,9 +54,9 @@ export class RestAnalyzer {
 
         Object.keys(data).forEach(key => {
             if (_.isArray(data[key])) {
-                data[key].forEach(resource => ressources.push(new Ressource(this.http, this, key, resource, container)));
+                data[key].forEach(resource => ressources.push(new Ressource(this.http, this.util, this, key, resource, container)));
             } else {
-                ressources.push(new Ressource(this.http, this, key, data[key], container));
+                ressources.push(new Ressource(this.http, this.util, this, key, data[key], container));
             }
         });
 

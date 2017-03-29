@@ -1,3 +1,4 @@
+import { UtilService } from '../_shared/util.service';
 import { EventEmitter } from '@angular/core';
 import { Output, Input } from '@angular/core';
 import { Thing } from '../models/thing.model';
@@ -10,15 +11,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./thingForm.scss']
 })
 export class FormComponent {
-  @Input() thing: Thing
+  @Input() thing: Thing = new Thing();
 
   @Output() onSaved = new EventEmitter();
 
   constructor(
-    private backendService: BackendService
-  ) {
-    this.thing = this.thing || new Thing();
-  }
+    private backendService: BackendService,
+    private util: UtilService
+  ) { }
 
   saveThing() {
     if (this.thing._id) {

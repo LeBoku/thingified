@@ -1,3 +1,4 @@
+import { UtilService } from './util.service';
 import { RestAnalyzer } from './_restExplorer/restAnalyzer';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -10,9 +11,10 @@ export class RestExplorer {
     private analyzer: RestAnalyzer;
 
     constructor(
-        private http: Http
+        private http: Http,
+        private util: UtilService
     ) {
-        this.analyzer = new RestAnalyzer(this.http);
+        this.analyzer = new RestAnalyzer(this.http, this.util);
     }
 
     fromHref(href: string) {

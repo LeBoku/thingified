@@ -1,3 +1,4 @@
+import { UtilService } from './_shared/util.service';
 import { ThingsService } from './_shared/things.service';
 import { ThingFormModule } from './thingForm/thingForm.module';
 import { BackendService } from './_shared/backend.service';
@@ -21,7 +22,7 @@ import { AppComponent } from './app.component';
     ThingFormModule,
     OverviewModule
   ],
-  providers: [BackendService, RestExplorer, ThingsService],
+  providers: [BackendService, RestExplorer, ThingsService, UtilService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

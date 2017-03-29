@@ -1,3 +1,4 @@
+import { UtilService } from '../util.service';
 import { BaseRequestOptions } from '@angular/http/src/base_request_options';
 import { RequestOptionsArgs } from '@angular/http';
 import { RestAnalyzer } from './restAnalyzer';
@@ -16,6 +17,7 @@ export class Ressource {
 
     constructor(
         private http: Http,
+        private util: UtilService,
         private analyzer: RestAnalyzer,
         private key: string,
         private info: any,
@@ -48,7 +50,7 @@ export class Ressource {
     }
 
     private extractData(data: any) {
-        this.extractedData = this.clone(data);
+        this.extractedData = this.util.clone(data);
         delete this.extractedData._created;
         delete this.extractedData._links;
         delete this.extractedData._updated;
@@ -76,9 +78,5 @@ export class Ressource {
 
         this.relativeHref = info.href;
         this.href = constants.BACKEND_URL + '/' + this.relativeHref;
-    }
-
-    private clone(data: any) {
-        return JSON.parse(JSON.stringify(data));
     }
 }
