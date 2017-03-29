@@ -7,7 +7,7 @@
 <div class="buttons" *ngIf="showDetails">
     <div class="editForm" [ngClass]="{open: isEditing}">
         <div class="edit" (click)="isEditing = !isEditing"> / </div>
-        <tng-form [thing]="thing" *ngIf="isEditing"></tng-form>
+        <tng-form [thing]="thing" *ngIf="isEditing" (onSaved)="isEditing = false"></tng-form>
     </div>
     <div class="delete" (click)="deleteThing(thing)"> - </div>
 </div>
