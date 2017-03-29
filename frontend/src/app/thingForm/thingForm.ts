@@ -16,7 +16,7 @@ export class FormComponent {
   @Output() onSaved = new EventEmitter();
 
   constructor(
-    private backendService: BackendService,
+    private backend: BackendService,
     private util: UtilService
   ) { }
 
@@ -24,7 +24,7 @@ export class FormComponent {
     if (this.thing._id) {
       this.thing.$self.update().then(() => this.onSaved.emit());
     } else {
-      this.backendService.backend.$things.post(this.thing).then(() => this.onSaved.emit());
+      this.backend.things.post(this.thing).then(() => this.onSaved.emit());
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Ressource } from '../_shared/_restExplorer/ressource';
 import { ThingsService } from '../_shared/things.service';
-import { BackendService } from '../_shared/backend.service';
 import { Component } from '@angular/core';
 
 @Component({

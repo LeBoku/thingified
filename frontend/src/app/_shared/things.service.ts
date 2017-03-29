@@ -6,14 +6,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ThingsService {
     constructor(
-        private backendService: BackendService
+        private backend: BackendService
     ) {
 
     }
 
     loadThings() {
-        return this.backendService.backendPromise.then(() => {
-            return this.backendService.backend.$things.get().then(things => things);
+        return this.backend.promise.then(() => {
+            return this.backend.things.get().then(things => things);
         });
     }
 }
